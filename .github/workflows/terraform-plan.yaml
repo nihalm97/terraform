@@ -1,0 +1,44 @@
+name: tf-plan
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+    branches: aws
+    paths:
+      - '**.tf'
+      - '**.tfvars'
+
+env:
+    AWS_REGION : "us-east-1"
+
+jobs:
+  terraform-plan:
+        # Allow the job to fetch a GitHub ID token
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    runs-on: self-hosted
+    
+    steps:
+        - uses: actions/checkout@v3.6.0
+
+        - name: Install Terraform
+          uses: hashicorp/setup-terraform@v2
+
+        - name: Configure AWS Credentials
+          uses: aws-actions/configure-aws-credentials@v4
+          with:
+            audience: sts.amazonaws.com
+            aws-region: us-east-1
+            role-to-assume: arn:aws:iam::851725305616:role/gha_oidc_role
+
+        - name: Install Terraform
+          run: | 
+                terraform --version
+                terraform init
+                terraform plan
+                pwd
+                ls -al
