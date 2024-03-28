@@ -28,7 +28,7 @@ resource "aws_iam_role" "gha_oidc_role" {
             "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
           },
           "StringLike" : {
-            "token.actions.githubusercontent.com:sub" : ["repo:nihalm97/terrafor:*"]
+            "token.actions.githubusercontent.com:sub" : ["repo:nihalm97/terraform:*"]
           }
         }
       }
