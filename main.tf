@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "example" {
-  bucket = "buckettest77"
+  bucket = "nihals-first-freekin-bucket-12397"
 
   tags = {
     Name        = "My bucket"

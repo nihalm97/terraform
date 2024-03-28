@@ -1,4 +1,4 @@
-name: tf-plan
+name: tf-apply
 
 on:
   push:
@@ -11,7 +11,7 @@ env:
     AWS_REGION : "us-east-1"
 
 jobs:
-  terraform-plan:
+  terraform-apply:
         # Allow the job to fetch a GitHub ID token
     permissions:
       contents: 'read'
