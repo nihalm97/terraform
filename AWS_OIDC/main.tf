@@ -25,10 +25,10 @@ resource "aws_iam_role" "gha_oidc_role" {
         "Action" : "sts:AssumeRoleWithWebIdentity",
         "Condition" : {
           "StringEquals" : {
-            "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+            "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
           },
           "StringLike" : {
-            "token.actions.githubusercontent.com:sub" : ["repo:nihalm97/terrafor:*"]
+            "token.actions.githubusercontent.com:sub" : ["repo:nihalm97/terraform:*"]
           }
         }
       }
@@ -45,10 +45,12 @@ resource "aws_iam_role_policy" "gha_oidc_terraform_permissions" {
     Statement = [
       {
         Action = [
-          "sns:*", 
+          "sns:*",
           "lambda:*",
           "iam:*",
-          "s3:*"
+          "s3:*",
+          "sts:AssumeRoleWithWebIdentity",
+          "sts:AssumeRole"
         ]
         Effect   = "Allow"
         Resource = "*"
