@@ -1,11 +1,11 @@
-resource "aws_s3_bucket" "example" {
-  bucket = "nihals-first-freekin-bucket-12397"
+# resource "aws_s3_bucket" "example" {
+#   bucket = "nihals-first-freekin-bucket-12397"
 
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
+#   tags = {
+#     Name        = "My bucket"
+#     Environment = "Dev"
+#   }
+# }
 
 terraform {
   required_providers {
